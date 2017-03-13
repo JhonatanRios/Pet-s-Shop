@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PConstants;
+import processing.core.PImage;
 
 public class Logica {
 
 	PApplet app;
+	private int pantalla;
+	private boolean boton;
+	private PImage[] panta = new PImage[4];;
 	private Object seleccionar = null;
 	private ArrayList<Guia> guia = new ArrayList<Guia>();
 	private ArrayList<Compa> compa = new ArrayList<Compa>();
@@ -38,10 +42,35 @@ public class Logica {
 
 			guia.add(new Guia(app, i, 0, randomX, randomY));
 		}
+
+		panta[0] = app.loadImage("../data/Inicio.png");
+		panta[1] = app.loadImage("../data/Juego.png");
+		panta[2] = app.loadImage("../data/Start1.png");
+		panta[3] = app.loadImage("../data/Start2.png");
 	}
 
 	public void pintar(PApplet app) {
 
+		switch (pantalla) {
+
+		case 0:
+			app.image(panta[0], 0, 0);
+
+			if (boton == false) {
+				app.image(panta[2], 0, 0);
+			}
+			if (boton == true) {
+				app.image(panta[3], 0, 0);
+			}
+
+			break;
+
+		case 1:
+
+			app.image(panta[1], 0, 0);
+
+			break;
+		}
 	}
 
 	public void pres(int mouseX, int mouseY) {

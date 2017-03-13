@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
@@ -28,21 +27,21 @@ public class Guia {
 		this.x = x;
 		this.y = y;
 
-		guia[0] = app.loadImage("laDefense.jpg");
-		guia[1] = app.loadImage("laDefense.jpg");
-		guia[2] = app.loadImage("laDefense.jpg");
-		guia[3] = app.loadImage("laDefense.jpg");
-		guia[4] = app.loadImage("laDefense.jpg");
-		guia[5] = app.loadImage("laDefense.jpg");
-		guia[6] = app.loadImage("laDefense.jpg");
-		guia[7] = app.loadImage("laDefense.jpg");
-		guia[8] = app.loadImage("laDefense.jpg");
-		guia[9] = app.loadImage("laDefense.jpg");
-		guia[10] = app.loadImage("laDefense.jpg");
-		guia[11] = app.loadImage("laDefense.jpg");
-		guia[12] = app.loadImage("laDefense.jpg");
-		guia[13] = app.loadImage("laDefense.jpg");
-		guia[14] = app.loadImage("laDefense.jpg");
+		guia[0] = app.loadImage("../data/Cerdo.png");
+		guia[1] = app.loadImage("../data/Cerdo2.png");
+		guia[2] = app.loadImage("../data/Cerdo3.png");
+		guia[3] = app.loadImage("../data/Conejo.png");
+		guia[4] = app.loadImage("../data/Conejo2.png");
+		guia[5] = app.loadImage("../data/Conejo3.png");
+		guia[6] = app.loadImage("../data/Gato.png");
+		guia[7] = app.loadImage("../data/Gato2.png");
+		guia[8] = app.loadImage("../data/Gato3.png");
+		guia[9] = app.loadImage("../data/Perro.png");
+		guia[10] = app.loadImage("../data/Perro2.png");
+		guia[11] = app.loadImage("../data/Perro3.png");
+		guia[12] = app.loadImage("../data/Pez.png");
+		guia[13] = app.loadImage("../data/Pez2.png");
+		guia[14] = app.loadImage("../data/Pez3.png");
 	}
 
 	public void pintar() {
@@ -61,7 +60,7 @@ public class Guia {
 		if (ani == 2) {
 			app.image(guia[2], x, y);
 		}
-		// Perro.
+		// Conejo.
 		if (ani == 3) {
 			app.image(guia[3], x, y);
 		}
@@ -81,7 +80,7 @@ public class Guia {
 		if (ani == 8) {
 			app.image(guia[8], x, y);
 		}
-		// Conejo.
+		// Perro.
 		if (ani == 9) {
 			app.image(guia[9], x, y);
 		}
