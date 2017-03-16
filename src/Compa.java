@@ -27,9 +27,9 @@ public class Compa {
 			app.fill(232, 144, 125);
 			app.ellipse(x + a, y + bDos, 20, 20);
 		}
-		// Perro.
-		if (ani == 1) {
-			app.fill(193, 155, 100);
+		// Conejo.
+		if (ani == 3) {
+			app.fill(255, 255, 255);
 			app.ellipse(x + a, y + bDos, 20, 20);
 		}
 		// Gato.
@@ -37,9 +37,9 @@ public class Compa {
 			app.fill(193, 176, 160);
 			app.ellipse(x + a, y + bDos, 20, 20);
 		}
-		// Conejo.
-		if (ani == 3) {
-			app.fill(255, 255, 255);
+		// Perro.
+		if (ani == 1) {
+			app.fill(193, 155, 100);
 			app.ellipse(x + a, y + bDos, 20, 20);
 		}
 		// Pez.

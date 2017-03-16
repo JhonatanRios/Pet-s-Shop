@@ -28,77 +28,100 @@ public class Guia {
 		this.y = y;
 
 		guia[0] = app.loadImage("../data/Cerdo.png");
-		guia[1] = app.loadImage("../data/Cerdo2.png");
-		guia[2] = app.loadImage("../data/Cerdo3.png");
-		guia[3] = app.loadImage("../data/Conejo.png");
-		guia[4] = app.loadImage("../data/Conejo2.png");
-		guia[5] = app.loadImage("../data/Conejo3.png");
-		guia[6] = app.loadImage("../data/Gato.png");
+		guia[1] = app.loadImage("../data/Conejo.png");
+		guia[2] = app.loadImage("../data/Gato.png");
+		guia[3] = app.loadImage("../data/Perro.png");
+		guia[4] = app.loadImage("../data/Pez.png");
+		guia[5] = app.loadImage("../data/Cerdo2.png");
+		guia[6] = app.loadImage("../data/Conejo2.png");
 		guia[7] = app.loadImage("../data/Gato2.png");
-		guia[8] = app.loadImage("../data/Gato3.png");
-		guia[9] = app.loadImage("../data/Perro.png");
-		guia[10] = app.loadImage("../data/Perro2.png");
-		guia[11] = app.loadImage("../data/Perro3.png");
-		guia[12] = app.loadImage("../data/Pez.png");
-		guia[13] = app.loadImage("../data/Pez2.png");
+		guia[8] = app.loadImage("../data/Perro2.png");
+		guia[9] = app.loadImage("../data/Pez2.png");
+		guia[10] = app.loadImage("../data/Cerdo3.png");
+		guia[11] = app.loadImage("../data/Conejo3.png");
+		guia[12] = app.loadImage("../data/Gato3.png");
+		guia[13] = app.loadImage("../data/Perro3.png");
 		guia[14] = app.loadImage("../data/Pez3.png");
 	}
 
-	public void pintar() {
+	public void pintar(PApplet app) {
 		pintarGuia(app);
 		pintarCompa(app);
 	}
 
 	private void pintarGuia(PApplet app) {
-		// Cerdo.
-		if (ani == 0) {
-			app.image(guia[0], x, y);
+
+		// Triste
+		if (estado == 0) {
+			// Cerdo
+			if (ani == 0) {
+				app.image(guia[0], x, y);
+			}
+			// Conejo
+			if (ani == 1) {
+				app.image(guia[1], x, y);
+			}
+			// Gato
+			if (ani == 2) {
+				app.image(guia[2], x, y);
+			}
+			// Perro
+			if (ani == 3) {
+				app.image(guia[3], x, y);
+			}
+			// Pez
+			if (ani == 4) {
+				app.image(guia[4], x, y);
+			}
+
 		}
-		if (ani == 1) {
-			app.image(guia[1], x, y);
+
+		// Normal
+		if (estado == 1) {
+			// Cerdo
+			if (ani == 5) {
+				app.image(guia[5], x, y);
+			}
+			// Conejo
+			if (ani == 6) {
+				app.image(guia[6], x, y);
+			}
+			// Gato
+			if (ani == 7) {
+				app.image(guia[7], x, y);
+			}
+			// Perro
+			if (ani == 8) {
+				app.image(guia[8], x, y);
+			}
+			// Pez
+			if (ani == 9) {
+				app.image(guia[9], x, y);
+			}
 		}
-		if (ani == 2) {
-			app.image(guia[2], x, y);
-		}
-		// Conejo.
-		if (ani == 3) {
-			app.image(guia[3], x, y);
-		}
-		if (ani == 4) {
-			app.image(guia[4], x, y);
-		}
-		if (ani == 5) {
-			app.image(guia[5], x, y);
-		}
-		// Gato.
-		if (ani == 6) {
-			app.image(guia[6], x, y);
-		}
-		if (ani == 7) {
-			app.image(guia[7], x, y);
-		}
-		if (ani == 8) {
-			app.image(guia[8], x, y);
-		}
-		// Perro.
-		if (ani == 9) {
-			app.image(guia[9], x, y);
-		}
-		if (ani == 10) {
-			app.image(guia[10], x, y);
-		}
-		if (ani == 11) {
-			app.image(guia[11], x, y);
-		}
-		// Pez.
-		if (ani == 12) {
-			app.image(guia[12], x, y);
-		}
-		if (ani == 13) {
-			app.image(guia[13], x, y);
-		}
-		if (ani == 14) {
-			app.image(guia[14], x, y);
+
+		// Feliz
+		if (estado == 2) {
+			// Cerdo
+			if (ani == 10) {
+				app.image(guia[10], x, y);
+			}
+			// Conejo
+			if (ani == 11) {
+				app.image(guia[11], x, y);
+			}
+			// Gato
+			if (ani == 12) {
+				app.image(guia[12], x, y);
+			}
+			// Perro
+			if (ani == 13) {
+				app.image(guia[13], x, y);
+			}
+			// Pez
+			if (ani == 14) {
+				app.image(guia[14], x, y);
+			}
 		}
 	}
 

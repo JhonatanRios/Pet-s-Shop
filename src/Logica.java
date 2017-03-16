@@ -12,35 +12,23 @@ public class Logica {
 	private Object seleccionar = null;
 	private ArrayList<Guia> guia = new ArrayList<Guia>();
 	private ArrayList<Compa> compa = new ArrayList<Compa>();
+	private Guia g;
+	private Compa c;
 
 	public Logica(PApplet app) {
+		this.app = app;
 		inicio();
 	}
 
 	private void inicio() {
-		for (int i = 0; i < 10; i++) {
-			int randomX = (int) (Math.random() * 750 + 50);
-			int randomY = (int) (Math.random() * 250 + 300);
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-			compa.add(new Compa(0, randomX, randomY));
-		}
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 10; j++) {
+				int randomX = (int) (Math.random() * 100 + 408);
+				int randomY = (int) (Math.random() * 600 + 0);
+				compa.add(new Compa(i, randomX, randomY));
 
-			int randomX = (int) (Math.random() * 750 + 50);
-			int randomY = (int) (Math.random() * 250 + 300);
-
-			guia.add(new Guia(app, i, 0, randomX, randomY));
+			}
 		}
 
 		panta[0] = app.loadImage("../data/Inicio.png");
@@ -54,15 +42,21 @@ public class Logica {
 		switch (pantalla) {
 
 		case 0:
+
 			app.image(panta[0], 0, 0);
 
 			if (boton == false) {
 				app.image(panta[2], 0, 0);
 			}
+
 			if (boton == true) {
 				app.image(panta[3], 0, 0);
 			}
-
+			if (app.mouseX >= 416 && app.mouseX <= 583 && app.mouseY >= 487 && app.mouseY <= 525) {
+				boton = true;
+			} else {
+				boton = false;
+			}
 			break;
 
 		case 1:
@@ -71,10 +65,6 @@ public class Logica {
 
 			break;
 		}
-	}
-
-	public void pres(int mouseX, int mouseY) {
-
 	}
 
 	public void mover(int mouseX, int mouseY) {
@@ -86,16 +76,23 @@ public class Logica {
 	}
 
 	public void creaGuia(PApplet app, int mouseX, int mouseY) {
-		if ((app.mouseButton == PConstants.LEFT)) {
-			int ani = (int) (Math.random() * 0 + 5);
-			guia.add(new Guia(app, ani, 0, mouseX, mouseY));
-		}
+
 	}
 
 	public void creaCompa(PApplet app, int mouseX, int mouseY) {
-		if ((app.mouseButton == PConstants.RIGHT)) {
-			int ani = (int) (Math.random() * 0 + 5);
-			compa.add(new Compa(ani, mouseX, mouseY));
+
+	}
+
+	public void pres(int mouseX, int mouseY) {
+
+		if (mouseX >= 43 && mouseX <= 77 && mouseY >= 146 && mouseY <= 156) {
+			int randomX = (int) (Math.random() * 750 + 50);
+			int randomY = (int) (Math.random() * 250 + 300);
+			guia.add(new Guia(app, 0, 0, randomX, randomY));
+		}
+
+		if (mouseX >= 416 && mouseX <= 583 && mouseY >= 487 && mouseY <= 525) {
+			pantalla = 1;
 		}
 	}
 

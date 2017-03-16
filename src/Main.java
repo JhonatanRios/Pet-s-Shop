@@ -10,7 +10,7 @@ public class Main extends PApplet {
 	}
 
 	public void settings() {
-		size(800, 800);
+		size(1000, 600);
 	}
 
 	public void setup() {
@@ -36,10 +36,11 @@ public class Main extends PApplet {
 	}
 
 	public void mouseClicked(MouseEvent event) {
-		if (event.getClickCount() == 2) {// usar el doble click
-			log.creaGuia(this, mouseX, mouseY);
-			log.creaCompa(this, mouseX, mouseY);
-		}
+//		if (event.getClickCount() == 2) {// usar el doble click
+//			log.creaGuia(this, mouseX, mouseY);
+//			log.creaCompa(this, mouseX, mouseY);
+//		}
+		System.out.println(mouseX + " " + mouseY);
 	}
 
 }
