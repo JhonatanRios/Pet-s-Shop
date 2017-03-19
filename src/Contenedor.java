@@ -45,7 +45,7 @@ public class Contenedor {
 		}
 	}
 
-	public ArrayList<Compa> getEstrellas() {
+	public ArrayList<Compa> getCompa() {
 		return compas;
 	}
 

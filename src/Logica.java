@@ -14,6 +14,7 @@ public class Logica {
 	private ArrayList<Compa> compa = new ArrayList<Compa>();
 	private Guia g;
 	private Compa c;
+	private Contenedor contenedorU;
 
 	public Logica(PApplet app) {
 		this.app = app;
@@ -93,7 +94,22 @@ public class Logica {
 
 	public void tecla() {
 		if (pantalla == 1) {
-			
+			if (app.key == '1') {
+				contenedorU.ordenar();
+			}
+
+			if (app.key == '2') {
+				contenedorU.ordenarRevez();
+			}
+			if (app.key == ' ') {
+				compa.addAll(contenedorU.getCompa());
+				contenedorU.remover();
+				contenedorU.setContadorUno(0);
+				contenedorU.setContadorDos(0);
+				contenedorU.setContadorTres(0);
+				contenedorU.setContadorCuatro(0);
+				contenedorU.setContadorCinco(0);
+			}
 		}
 	}
 
