@@ -1,25 +1,32 @@
 import processing.core.PApplet;
 import processing.core.PConstants;
 
-public class Compa {
+public abstract class Compa {
 
-	private int x;
-	private int y;
+	protected int codigo;
 
-	private int a;
-	private int bDos;
+	protected int x;
+	protected int y;
+
+	protected int a;
+	protected int bDos;
 	private int ani;
 
 	private float rad = 45;
 	private float tet = 2 / PConstants.PI;
 
-	public Compa(int ani, int x, int y) {
+	PApplet app;
+
+	public Compa(PApplet app) {
+		this.app = app;
 		this.ani = ani;
 		this.x = x;
 		this.y = y;
 		a = 0;
 		bDos = 0;
 	}
+
+	public abstract void pintarDos();
 
 	public void pintar(PApplet app) {
 		// Cerdo.
@@ -86,11 +93,6 @@ public class Compa {
 	public int getCodigo() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	public void pintarDos() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public int getPrePosX() {

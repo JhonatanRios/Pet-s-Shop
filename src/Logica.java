@@ -23,14 +23,6 @@ public class Logica {
 
 	private void inicio() {
 
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 10; j++) {
-				int randomX = (int) (Math.random() * 100 + 408);
-				int randomY = (int) (Math.random() * 600 + 0);
-				compa.add(new Compa(i, randomX, randomY));
-
-			}
-		}
 		panta[0] = app.loadImage("../data/Inicio.png");
 		panta[1] = app.loadImage("../data/Juego.png");
 		panta[2] = app.loadImage("../data/Start1.png");

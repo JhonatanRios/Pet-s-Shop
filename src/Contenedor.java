@@ -18,20 +18,19 @@ public class Contenedor {
 	public void atraparParticula(Compa compaPeque) {
 
 		if (compas.add(compaPeque)) {
-
-			if (compaPeque instanceof EnanaBlanca) {
+			if (compaPeque instanceof CompaCerdo) {
 				contadorUno++;
 			}
-			if (compaPeque instanceof EnanaRoja) {
+			if (compaPeque instanceof CompaConejo) {
 				contadorDos++;
 			}
-			if (compaPeque instanceof EnanaAmarilla) {
+			if (compaPeque instanceof CompaGato) {
 				contadorTres++;
 			}
-			if (compaPeque instanceof EnanaAzul) {
+			if (compaPeque instanceof CompaPerro) {
 				contadorCuatro++;
 			}
-			if (compaPeque instanceof EnanaPeculiar) {
+			if (compaPeque instanceof CompaPez) {
 				contadorCinco++;
 			}
 		}
