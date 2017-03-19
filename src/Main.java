@@ -1,8 +1,8 @@
 import processing.core.PApplet;
-import processing.event.MouseEvent;
 
 public class Main extends PApplet {
 
+	static public PApplet app;
 	private Logica log;
 
 	public static void main(String[] args) {
@@ -14,13 +14,13 @@ public class Main extends PApplet {
 	}
 
 	public void setup() {
+		Main.app = this;
 		log = new Logica(this);
 	}
 
 	public void draw() {
 		background(255, 255, 255);
 		log.pintar(this);
-
 	}
 
 	public void mousePressed() {
@@ -31,16 +31,12 @@ public class Main extends PApplet {
 		log.mover(mouseX, mouseY);
 	}
 
-	public void mouseReleased() {
-		log.soltar();
-	}
-
-	public void mouseClicked(MouseEvent event) {
-//		if (event.getClickCount() == 2) {// usar el doble click
-//			log.creaGuia(this, mouseX, mouseY);
-//			log.creaCompa(this, mouseX, mouseY);
-//		}
+	public void mouseClicked() {
+		log.pantalla();
 		System.out.println(mouseX + " " + mouseY);
 	}
 
+	public void keyPressed() {
+		log.tecla();
+	}
 }

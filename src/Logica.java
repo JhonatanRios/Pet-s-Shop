@@ -30,7 +30,6 @@ public class Logica {
 
 			}
 		}
-
 		panta[0] = app.loadImage("../data/Inicio.png");
 		panta[1] = app.loadImage("../data/Juego.png");
 		panta[2] = app.loadImage("../data/Start1.png");
@@ -40,7 +39,6 @@ public class Logica {
 	public void pintar(PApplet app) {
 
 		switch (pantalla) {
-
 		case 0:
 
 			app.image(panta[0], 0, 0);
@@ -71,28 +69,31 @@ public class Logica {
 
 	}
 
-	public void soltar() {
-		seleccionar = null;
-	}
-
-	public void creaGuia(PApplet app, int mouseX, int mouseY) {
-
-	}
-
-	public void creaCompa(PApplet app, int mouseX, int mouseY) {
-
-	}
+	// public void creaGuia(PApplet app, int mouseX, int mouseY) {
+	//
+	// }
+	//
+	// public void creaCompa(PApplet app, int mouseX, int mouseY) {
+	//
+	// }
 
 	public void pres(int mouseX, int mouseY) {
-
 		if (mouseX >= 43 && mouseX <= 77 && mouseY >= 146 && mouseY <= 156) {
 			int randomX = (int) (Math.random() * 750 + 50);
 			int randomY = (int) (Math.random() * 250 + 300);
 			guia.add(new Guia(app, 0, 0, randomX, randomY));
 		}
+	}
 
-		if (mouseX >= 416 && mouseX <= 583 && mouseY >= 487 && mouseY <= 525) {
+	public void pantalla() {
+		if (app.mouseX >= 416 && app.mouseX <= 583 && app.mouseY >= 487 && app.mouseY <= 525) {
 			pantalla = 1;
+		}
+	}
+
+	public void tecla() {
+		if (pantalla == 1) {
+			
 		}
 	}
 

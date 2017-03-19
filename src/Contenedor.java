@@ -55,7 +55,6 @@ public class Contenedor {
 			compa1.setY(compa1.getPrePosY());
 		}
 		compas.clear();
-
 	}
 
 	public void ordenar() {
