@@ -82,4 +82,24 @@ public class Compa {
 	public void setTet(float tet) {
 		this.tet = tet;
 	}
+
+	public int getCodigo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void pintarDos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int getPrePosX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getPrePosY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
