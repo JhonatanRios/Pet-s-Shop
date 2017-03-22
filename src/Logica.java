@@ -22,11 +22,27 @@ public class Logica {
 	}
 
 	private void inicio() {
+		contenedorU = new Contenedor();
 
 		panta[0] = app.loadImage("../data/Inicio.png");
 		panta[1] = app.loadImage("../data/Juego.png");
 		panta[2] = app.loadImage("../data/Start1.png");
 		panta[3] = app.loadImage("../data/Start2.png");
+
+		for (int i = 0; i < 5; i++) {
+			compa.add(new CompaCerdo(app));
+			compa.add(new CompaConejo(app));
+			compa.add(new CompaGato(app));
+			compa.add(new CompaPerro(app));
+			compa.add(new CompaPez(app));
+		}
+		
+		guia.add(new Cerdo(app));
+		guia.add(new Conejo(app));
+		guia.add(new Gato(app));
+		guia.add(new Perro(app));
+		guia.add(new Pez(app));
+		
 	}
 
 	public void pintar(PApplet app) {
