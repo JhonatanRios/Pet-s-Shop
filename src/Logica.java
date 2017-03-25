@@ -37,11 +37,11 @@ public class Logica {
 			compa.add(new CompaPez(app));
 		}
 		
-		guia.add(new Cerdo(app));
-		guia.add(new Conejo(app));
-		guia.add(new Gato(app));
-		guia.add(new Perro(app));
-		guia.add(new Pez(app));
+		// guia.add(new Cerdo(app));
+		// guia.add(new Conejo(app));
+		// guia.add(new Gato(app));
+		// guia.add(new Perro(app));
+		// guia.add(new Pez(app));
 		
 	}
 

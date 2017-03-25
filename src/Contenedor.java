@@ -57,7 +57,7 @@ public class Contenedor {
 	}
 
 	public void ordenar() {
-		Collections.sort(compas);
+		Collections.sort(null);
 	}
 
 	public void ordenarRevez() {
