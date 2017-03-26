@@ -7,11 +7,9 @@ public class Guia {
 
 	PApplet app;
 
-	private int x;
-	private int y;
-	private int numero;
+	private float x;
+	private float y;
 	private int ani;
-	private int estado;
 
 	private ArrayList<Compa> compaRef = new ArrayList<Compa>();
 
@@ -19,11 +17,10 @@ public class Guia {
 
 	private PImage[] guia = new PImage[15];
 
-	public Guia(PApplet app, int ani, int estado, int x, int y) {
+	public Guia(PApplet app, float x, float y, PImage objeto, int ani) {
 
 		this.app = app;
 		this.ani = ani;
-		this.estado = estado;
 		this.x = x;
 		this.y = y;
 
@@ -46,94 +43,96 @@ public class Guia {
 
 	public void pintar(PApplet app) {
 		pintarGuia(app);
-		pintarCompa(app);
+		// pintarCompa(app);
 	}
 
 	private void pintarGuia(PApplet app) {
 
 		// Triste
-		if (estado == 0) {
-			// Cerdo
-			if (ani == 0) {
-				app.image(guia[0], x, y);
-			}
-			// Conejo
-			if (ani == 1) {
-				app.image(guia[1], x, y);
-			}
-			// Gato
-			if (ani == 2) {
-				app.image(guia[2], x, y);
-			}
-			// Perro
-			if (ani == 3) {
-				app.image(guia[3], x, y);
-			}
-			// Pez
-			if (ani == 4) {
-				app.image(guia[4], x, y);
-			}
-
+		// Cerdo
+		if (ani == 0) {
+			app.image(guia[ani], x, y);
+		}
+		// Conejo
+		if (ani == 1) {
+			app.image(guia[ani], x, y);
+		}
+		// Gato
+		if (ani == 2) {
+			app.image(guia[ani], x, y);
+		}
+		// Perro
+		if (ani == 3) {
+			app.image(guia[ani], x, y);
+		}
+		// Pez
+		if (ani == 4) {
+			app.image(guia[ani], x, y);
 		}
 
 		// Normal
-		if (estado == 1) {
-			// Cerdo
-			if (ani == 5) {
-				app.image(guia[5], x, y);
-			}
-			// Conejo
-			if (ani == 6) {
-				app.image(guia[6], x, y);
-			}
-			// Gato
-			if (ani == 7) {
-				app.image(guia[7], x, y);
-			}
-			// Perro
-			if (ani == 8) {
-				app.image(guia[8], x, y);
-			}
-			// Pez
-			if (ani == 9) {
-				app.image(guia[9], x, y);
-			}
+		// Cerdo
+		if (ani == 5) {
+			app.image(guia[ani], x, y);
+		}
+
+		// Conejo
+		if (ani == 6) {
+			app.image(guia[ani], x, y);
+		}
+
+		// Gato
+		if (ani == 7) {
+			app.image(guia[ani], x, y);
+		}
+
+		// Perro
+		if (ani == 8) {
+			app.image(guia[ani], x, y);
+		}
+
+		// Pez
+		if (ani == 9) {
+			app.image(guia[ani], x, y);
 		}
 
 		// Feliz
-		if (estado == 2) {
-			// Cerdo
-			if (ani == 10) {
-				app.image(guia[10], x, y);
-			}
-			// Conejo
-			if (ani == 11) {
-				app.image(guia[11], x, y);
-			}
-			// Gato
-			if (ani == 12) {
-				app.image(guia[12], x, y);
-			}
-			// Perro
-			if (ani == 13) {
-				app.image(guia[13], x, y);
-			}
-			// Pez
-			if (ani == 14) {
-				app.image(guia[14], x, y);
-			}
+		// Cerdo
+		if (ani == 10) {
+			app.image(guia[ani], x, y);
 		}
+
+		// Conejo
+		if (ani == 11) {
+			app.image(guia[ani], x, y);
+		}
+
+		// Gato
+		if (ani == 12) {
+			app.image(guia[ani], x, y);
+		}
+
+		// Perro
+		if (ani == 13) {
+			app.image(guia[ani], x, y);
+		}
+
+		// Pez
+		if (ani == 14) {
+			app.image(guia[ani], x, y);
+		}
+
 	}
 
-	private void pintarCompa(PApplet app) {
-		for (int i = 0; i < compaRef.size(); i++) {
-			compaRef.get(i).pintar(app);
-			compaRef.get(i).setX(x);
-			compaRef.get(i).setY(y);
-			compaRef.get(i).setTet((float) (compaRef.get(i).getTet() + 0.05));
-			compaRef.get(i).rotar();
-		}
-	}
+	// private void pintarCompa(PApplet app) {
+	// for (int i = 0; i < compaRef.size(); i++) {
+	// compaRef.get(i).pintar();
+	// compaRef.get(i).setX(x);
+	// compaRef.get(i).setY(y);
+	// compaRef.get(i).setTet((float) (compaRef.get(i).getTet() + 0.05));
+	// compaRef.get(i).rotar();
+	// }
+	// }
 
 	public void mover(int x, int y) {
 		this.x = x;
@@ -155,19 +154,19 @@ public class Guia {
 		return compaRef;
 	}
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 }

@@ -1,59 +1,83 @@
 import processing.core.PApplet;
 import processing.core.PConstants;
+import processing.core.PImage;
 
-public abstract class Compa {
+public abstract class Compa implements Pintable, Comparable<Compa> {
 
-	protected int codigo;
-
-	protected int x;
-	protected int y;
-
-	protected int a;
-	protected int bDos;
 	private int ani;
+//	private int conejo;
+//	private int gato;
+//	private int perro;
+//	private int pez;
+
+	private int x;
+	private int y;
+
+	private int a;
+	private int bDos;
 
 	private float rad = 45;
 	private float tet = 2 / PConstants.PI;
 
+	private PImage[] recogible = new PImage[5];
+
 	PApplet app;
 
-	public Compa(PApplet app) {
+	public Compa(PImage[] recogible, int ani, PApplet app) {
 		this.app = app;
 		this.ani = ani;
-		this.x = x;
-		this.y = y;
+		this.recogible = recogible;
+		this.x = (int) app.random(310, 1000);
 		a = 0;
 		bDos = 0;
 	}
 
-	public abstract void pintarDos();
+	public void pintar() {
 
-	public void pintar(PApplet app) {
-		// Cerdo.
-		if (ani == 0) {
-			app.fill(232, 144, 125);
-			app.ellipse(x + a, y + bDos, 20, 20);
-		}
-		// Conejo.
-		if (ani == 3) {
-			app.fill(255, 255, 255);
-			app.ellipse(x + a, y + bDos, 20, 20);
-		}
-		// Gato.
-		if (ani == 2) {
-			app.fill(193, 176, 160);
-			app.ellipse(x + a, y + bDos, 20, 20);
-		}
-		// Perro.
-		if (ani == 1) {
-			app.fill(193, 155, 100);
-			app.ellipse(x + a, y + bDos, 20, 20);
-		}
-		// Pez.
-		if (ani == 4) {
-			app.fill(255, 153, 9);
-			app.ellipse(x + a, y + bDos, 20, 20);
-		}
+		app.image(recogible[ani], x, y);
+
+		// // Cerdo.
+		// if (ani == 0) {
+		// conejo=1;
+		// gato=2;
+		// perro=3;
+		// pez=4;
+		// }
+		// // Conejo.
+		// if (ani == 1) {
+		// conejo;
+		// gato;
+		// perro;
+		// pez;
+		// }
+		// // Gato.
+		// if (ani == 2) {
+		// conejo;
+		// gato;
+		// perro;
+		// pez;
+		// }
+		// // Perro.
+		// if (ani == 3) {
+		// conejo;
+		// gato;
+		// perro;
+		// pez;
+		// }
+		// // Pez.
+		// if (ani == 4) {
+		// conejo;
+		// gato;
+		// perro;
+		// pez;
+		// }
+	}
+
+	public void pintarDos(int x, int y) {
+		this.x = x;
+		this.y = y;
+
+		app.image(recogible[ani], x, y);
 	}
 
 	public void mover(int x, int y) {
@@ -103,5 +127,17 @@ public abstract class Compa {
 	public int getPrePosY() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public int getAni() {
+		return ani;
+	}
+
+	public void setAni(int ani) {
+		this.ani = ani;
+	}
+
+	public int compareTo(Compa o) {
+		return o.ani - ani;
 	}
 }
