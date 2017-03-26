@@ -3,7 +3,7 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
 
-public class Guia {
+public class Guia implements Pintable {
 
 	PApplet app;
 
@@ -41,7 +41,8 @@ public class Guia {
 		guia[14] = app.loadImage("../data/Pez3.png");
 	}
 
-	public void pintar(PApplet app) {
+	@Override
+	public void pintar() {
 		pintarGuia(app);
 		// pintarCompa(app);
 	}
@@ -169,4 +170,5 @@ public class Guia {
 	public void setY(float y) {
 		this.y = y;
 	}
+
 }
