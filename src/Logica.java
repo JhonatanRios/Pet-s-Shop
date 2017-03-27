@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+
 import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
@@ -6,15 +8,14 @@ import processing.core.PImage;
 public class Logica {
 
 	PApplet app;
-	private int pantalla;
+	private int pantalla, var;
 	private boolean boton;
-	private PImage[] panta = new PImage[4];;
-	private Object seleccionar = null;
+	private boolean anadir = true;
+	private PImage[] panta = new PImage[4];
 	private ArrayList<Guia> guia = new ArrayList<Guia>();
 	private ArrayList<Compa> compa = new ArrayList<Compa>();
-	private Guia g;
-	private Compa c;
-	// private Contenedor contenedorU;
+	private ArrayList<Compa> removidos = new ArrayList<Compa>();
+	private int contador0, contador1, contador2, contador3, contador4, contador;
 
 	public Logica(PApplet app) {
 		this.app = app;
@@ -22,27 +23,30 @@ public class Logica {
 	}
 
 	private void inicio() {
-		// contenedorU = new Contenedor();
 
 		panta[0] = app.loadImage("../data/Inicio.png");
 		panta[1] = app.loadImage("../data/Juego.png");
 		panta[2] = app.loadImage("../data/Start1.png");
 		panta[3] = app.loadImage("../data/Start2.png");
 
-		// for (int i = 0; i < 5; i++) {
-		// compa.add(new CompaCerdo(app));
-		// compa.add(new CompaConejo(app));
-		// compa.add(new CompaGato(app));
-		// compa.add(new CompaPerro(app));
-		// compa.add(new CompaPez(app));
-		// }
+		contador0 = 0;
+		contador1 = 0;
+		contador2 = 0;
+		contador3 = 0;
+		contador4 = 0;
+		contador = 0;
 
-		// guia.add(new Cerdo(app));
-		// guia.add(new Conejo(app));
-		// guia.add(new Gato(app));
-		// guia.add(new Perro(app));
-		// guia.add(new Pez(app));
+		for (int j = 0; j < 10; j++) {
+			for (int i = 0; i < 5; i++) {
+				compa.add(new Compa(i, app));
+			}
+		}
 
+		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 0));
+		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 1));
+		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 2));
+		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 3));
+		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 4));
 	}
 
 	public void pintar(PApplet app) {
@@ -69,20 +73,19 @@ public class Logica {
 		case 1:
 
 			app.image(panta[1], 0, 0);
+			pintar();
 
 			break;
 		}
 	}
 
-	public void mover(int mouseX, int mouseY) {
+	public void pintar() {
+		for (Guia g : guia) {
+			g.pintar();
+		}
 
-	}
-
-	public void pres(int mouseX, int mouseY) {
-		if (mouseX >= 43 && mouseX <= 77 && mouseY >= 146 && mouseY <= 156) {
-			int randomX = (int) (Math.random() * 750 + 50);
-			int randomY = (int) (Math.random() * 250 + 300);
-			//guia.add(new Guia(app, 0, 0, randomX, randomY));
+		for (Compa b : compa) {
+			b.pintar();
 		}
 	}
 
@@ -92,25 +95,40 @@ public class Logica {
 		}
 	}
 
+	public void distancia() {
+		for (int i = 0; i < guia.size(); i++) {
+			Guia elementoO = guia.get(i);
+			for (int j = 0; j < compa.size(); j++) {
+				Compa reco = compa.get(j);
+
+				if (app.dist(elementoO.getX(), elementoO.getY(), reco.getX(), reco.getY()) <= 30) {
+					var = reco.getAni();
+					compa.remove(reco);
+					removidos.add(reco);
+				}
+			}
+		}
+	}
+
 	public void tecla() {
-		// if (pantalla == 1) {
-		// if (app.key == '1') {
-		// contenedorU.ordenar();
-		// }
-		//
-		// if (app.key == '2') {
-		// contenedorU.ordenarRevez();
-		// }
-		// if (app.key == ' ') {
-		// compa.addAll(contenedorU.getCompa());
-		// contenedorU.remover();
-		// contenedorU.setContadorUno(0);
-		// contenedorU.setContadorDos(0);
-		// contenedorU.setContadorTres(0);
-		// contenedorU.setContadorCuatro(0);
-		// contenedorU.setContadorCinco(0);
-		// }
-		// }
+		if (pantalla == 1) {
+			if (app.key == '1') {
+				Collections.sort(removidos);
+			}
+			//
+			// if (app.key == '2') {
+			// contenedorU.ordenarRevez();
+			// }
+			// if (app.key == ' ') {
+			// compa.addAll(contenedorU.getCompa());
+			// contenedorU.remover();
+			// contenedorU.setContadorUno(0);
+			// contenedorU.setContadorDos(0);
+			// contenedorU.setContadorTres(0);
+			// contenedorU.setContadorCuatro(0);
+			// contenedorU.setContadorCinco(0);
+			// }
+		}
 	}
 
 }

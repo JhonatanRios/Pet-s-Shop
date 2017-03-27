@@ -23,13 +23,9 @@ public class Main extends PApplet {
 		log.pintar(this);
 	}
 
-	public void mousePressed() {
-		log.pres(mouseX, mouseY);
-	}
-
-	public void mouseDragged() {
-		log.mover(mouseX, mouseY);
-	}
+	// public void mousePressed() {
+	// log.pres(mouseX, mouseY);
+	// }
 
 	public void mouseClicked() {
 		log.pantalla();

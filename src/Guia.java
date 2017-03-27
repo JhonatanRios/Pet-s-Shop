@@ -17,7 +17,7 @@ public class Guia implements Pintable {
 
 	private PImage[] guia = new PImage[15];
 
-	public Guia(PApplet app, float x, float y, PImage objeto, int ani) {
+	public Guia(PApplet app, float x, float y, int ani) {
 
 		this.app = app;
 		this.ani = ani;

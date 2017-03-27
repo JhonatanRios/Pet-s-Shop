@@ -2,13 +2,13 @@ import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
 
-public abstract class Compa implements Pintable, Comparable<Compa> {
+public class Compa implements Pintable, Comparable<Compa> {
 
 	private int ani;
-//	private int conejo;
-//	private int gato;
-//	private int perro;
-//	private int pez;
+	// private int conejo;
+	// private int gato;
+	// private int perro;
+	// private int pez;
 
 	private int x;
 	private int y;
@@ -23,7 +23,7 @@ public abstract class Compa implements Pintable, Comparable<Compa> {
 
 	PApplet app;
 
-	public Compa(PImage[] recogible, int ani, PApplet app) {
+	public Compa(int ani, PApplet app) {
 		this.app = app;
 		this.ani = ani;
 		this.recogible = recogible;
@@ -33,9 +33,7 @@ public abstract class Compa implements Pintable, Comparable<Compa> {
 	}
 
 	public void pintar() {
-
 		app.image(recogible[ani], x, y);
-
 		// // Cerdo.
 		// if (ani == 0) {
 		// conejo=1;
@@ -76,7 +74,6 @@ public abstract class Compa implements Pintable, Comparable<Compa> {
 	public void pintarDos(int x, int y) {
 		this.x = x;
 		this.y = y;
-
 		app.image(recogible[ani], x, y);
 	}
 
@@ -115,17 +112,14 @@ public abstract class Compa implements Pintable, Comparable<Compa> {
 	}
 
 	public int getCodigo() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int getPrePosX() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int getPrePosY() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
