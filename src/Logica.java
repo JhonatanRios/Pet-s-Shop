@@ -11,11 +11,13 @@ public class Logica {
 	private int pantalla, var;
 	private boolean boton;
 	private boolean anadir = true;
-	private PImage[] panta = new PImage[4];
+	private PImage[] panta;
+	private PImage[] recog;
 	private ArrayList<Guia> guia = new ArrayList<Guia>();
 	private ArrayList<Compa> compa = new ArrayList<Compa>();
 	private ArrayList<Compa> removidos = new ArrayList<Compa>();
 	private int contador0, contador1, contador2, contador3, contador4, contador;
+	private Guia g;
 
 	public Logica(PApplet app) {
 		this.app = app;
@@ -24,10 +26,19 @@ public class Logica {
 
 	private void inicio() {
 
+		panta = new PImage[4];
+		recog = new PImage[5];
+
 		panta[0] = app.loadImage("../data/Inicio.png");
 		panta[1] = app.loadImage("../data/Juego.png");
 		panta[2] = app.loadImage("../data/Start1.png");
 		panta[3] = app.loadImage("../data/Start2.png");
+
+		recog[0] = app.loadImage("../data/recoCerdo.png");
+		recog[1] = app.loadImage("../data/recoConejo.png");
+		recog[2] = app.loadImage("../data/recoGato.png");
+		recog[3] = app.loadImage("../data/recoPerro.png");
+		recog[4] = app.loadImage("../data/recoPez.png");
 
 		contador0 = 0;
 		contador1 = 0;
@@ -36,17 +47,17 @@ public class Logica {
 		contador4 = 0;
 		contador = 0;
 
+		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 0));
+		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 1));
+		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 2));
+		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 3));
+		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 4));
+
 		for (int j = 0; j < 10; j++) {
 			for (int i = 0; i < 5; i++) {
-				compa.add(new Compa(i, app));
+				compa.add(new Compa(recog, i, app));
 			}
 		}
-
-		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 0));
-		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 1));
-		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 2));
-		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 3));
-		guia.add(new Guia(app, (int) app.random(310, 1000), (int) app.random(0, 600), 4));
 	}
 
 	public void pintar(PApplet app) {
@@ -80,12 +91,12 @@ public class Logica {
 	}
 
 	public void pintar() {
-		for (Guia g : guia) {
-			g.pintar();
-		}
-
 		for (Compa b : compa) {
 			b.pintar();
+		}
+
+		for (Guia g : guia) {
+			g.pintar();
 		}
 	}
 
@@ -100,14 +111,51 @@ public class Logica {
 			Guia elementoO = guia.get(i);
 			for (int j = 0; j < compa.size(); j++) {
 				Compa reco = compa.get(j);
+				if (contador <= 9) {
+					if (app.dist(elementoO.getX(), elementoO.getY(), reco.getX(), reco.getY()) <= 30) {
+						var = reco.getAni();
+						compa.remove(reco);
+						removidos.add(reco);
 
-				if (app.dist(elementoO.getX(), elementoO.getY(), reco.getX(), reco.getY()) <= 30) {
-					var = reco.getAni();
-					compa.remove(reco);
-					removidos.add(reco);
+						switch (var) {
+						case 0:
+							contador0++;
+							break;
+						case 1:
+							contador1++;
+							break;
+						case 2:
+							contador2++;
+							break;
+						case 3:
+							contador3++;
+							break;
+						case 4:
+							contador4++;
+							break;
+						}
+
+					}
+					contador += 1;
 				}
 			}
 		}
+
+		// Para colocar en removidos
+
+		for (int a = 0, fila = 0, col = 0; a < removidos.size(); a++, col++) {
+			if (col > 0) {
+				col = 0;
+				fila++;
+			}
+
+			if (fila <= 9) {
+				Compa n = removidos.get(a);
+				n.pintarDos(35 + (col * 30), 160 + (fila * 30));
+			}
+		}
+
+		contador += 1;
 	}
 
 	public void tecla() {
@@ -115,20 +163,55 @@ public class Logica {
 			if (app.key == '1') {
 				Collections.sort(removidos);
 			}
-			//
-			// if (app.key == '2') {
-			// contenedorU.ordenarRevez();
-			// }
-			// if (app.key == ' ') {
-			// compa.addAll(contenedorU.getCompa());
-			// contenedorU.remover();
-			// contenedorU.setContadorUno(0);
-			// contenedorU.setContadorDos(0);
-			// contenedorU.setContadorTres(0);
-			// contenedorU.setContadorCuatro(0);
-			// contenedorU.setContadorCinco(0);
-			// }
+
+			if (app.key == ' ') {
+				for (int j = 0; j < removidos.size(); j++) {
+					Compa reco = removidos.get(j);
+
+					compa.addAll(removidos);
+
+					if (reco.getAni() == 0) {
+						removidos.remove(j);
+						contador0 -= 1;
+					}
+
+					if (reco.getAni() == 1) {
+						removidos.remove(j);
+						contador1 -= 1;
+					}
+
+					if (reco.getAni() == 2) {
+						removidos.remove(j);
+						contador2 -= 1;
+					}
+
+					if (reco.getAni() == 3) {
+						removidos.remove(j);
+						contador3 -= 1;
+					}
+
+					if (reco.getAni() == 4) {
+						removidos.remove(j);
+						contador4 -= 1;
+					}
+					removidos.remove(j);
+					removidos.clear();
+				}
+			}
 		}
+	}
+
+	public void pres(int mouseX, int mouseY) {
+		for (int i = 0; i < this.guia.size(); i++) {
+			if (guia.get(i).validar(mouseX, mouseY)) {
+				this.g = this.guia.get(i);
+				break;
+			}
+		}
+	}
+
+	public void mover(int mouseX, int mouseY) {
+		g.mover(mouseX, mouseY);
 	}
 
 }

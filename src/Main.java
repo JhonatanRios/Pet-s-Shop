@@ -21,11 +21,16 @@ public class Main extends PApplet {
 	public void draw() {
 		background(255, 255, 255);
 		log.pintar(this);
+		log.distancia();
 	}
 
-	// public void mousePressed() {
-	// log.pres(mouseX, mouseY);
-	// }
+	 public void mousePressed() {
+	 log.pres(mouseX, mouseY);
+	 }
+
+	public void mouseDragged() {
+		log.mover(mouseX, mouseY);
+	}
 
 	public void mouseClicked() {
 		log.pantalla();

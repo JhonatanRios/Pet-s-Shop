@@ -147,8 +147,13 @@ public class Guia implements Pintable {
 		}
 	}
 
-	public boolean validar(int x, int y) {
-		return borde;
+	public boolean validar(int wx, int wy) {
+		if (PApplet.dist(wx, wy, this.x, this.y) < 2) {
+			this.borde = true;
+			return true;
+		}
+		this.borde = false;
+		return false;
 	}
 
 	public ArrayList<Compa> getCompaRef() {

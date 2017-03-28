@@ -5,10 +5,10 @@ import processing.core.PImage;
 public class Compa implements Pintable, Comparable<Compa> {
 
 	private int ani;
-	// private int conejo;
-	// private int gato;
-	// private int perro;
-	// private int pez;
+	private int conejo;
+	private int gato;
+	private int perro;
+	private int pez;
 
 	private int x;
 	private int y;
@@ -23,52 +23,53 @@ public class Compa implements Pintable, Comparable<Compa> {
 
 	PApplet app;
 
-	public Compa(int ani, PApplet app) {
+	public Compa(PImage[] recogible, int ani, PApplet app) {
 		this.app = app;
 		this.ani = ani;
 		this.recogible = recogible;
-		this.x = (int) app.random(310, 1000);
+		this.x = (int) app.random(360, 950);
+		this.y = (int) app.random(50, 550);
 		a = 0;
 		bDos = 0;
 	}
 
 	public void pintar() {
 		app.image(recogible[ani], x, y);
-		// // Cerdo.
-		// if (ani == 0) {
-		// conejo=1;
-		// gato=2;
-		// perro=3;
-		// pez=4;
-		// }
-		// // Conejo.
-		// if (ani == 1) {
-		// conejo;
-		// gato;
-		// perro;
-		// pez;
-		// }
-		// // Gato.
-		// if (ani == 2) {
-		// conejo;
-		// gato;
-		// perro;
-		// pez;
-		// }
-		// // Perro.
-		// if (ani == 3) {
-		// conejo;
-		// gato;
-		// perro;
-		// pez;
-		// }
-		// // Pez.
-		// if (ani == 4) {
-		// conejo;
-		// gato;
-		// perro;
-		// pez;
-		// }
+		// Cerdo.
+		if (ani == 0) {
+			conejo = 4;
+			gato = 3;
+			perro = 2;
+			pez = 1;
+		}
+		// Conejo.
+		if (ani == 1) {
+			conejo = 0;
+			gato = 4;
+			perro = 3;
+			pez = 2;
+		}
+		// Gato.
+		if (ani == 2) {
+			conejo = 1;
+			gato = 0;
+			perro = 4;
+			pez = 3;
+		}
+		// Perro.
+		if (ani == 3) {
+			conejo = 2;
+			gato = 1;
+			perro = 0;
+			pez = 4;
+		}
+		// Pez.
+		if (ani == 4) {
+			conejo = 3;
+			gato = 2;
+			perro = 1;
+			pez = 0;
+		}
 	}
 
 	public void pintarDos(int x, int y) {
@@ -109,10 +110,6 @@ public class Compa implements Pintable, Comparable<Compa> {
 
 	public void setTet(float tet) {
 		this.tet = tet;
-	}
-
-	public int getCodigo() {
-		return 0;
 	}
 
 	public int getPrePosX() {
