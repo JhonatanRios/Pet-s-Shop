@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+//Codigo realizado con la sensual ayuda de Stefani
 
 public class Main extends PApplet {
 
@@ -24,12 +25,16 @@ public class Main extends PApplet {
 		log.distancia();
 	}
 
-	 public void mousePressed() {
-	 log.pres(mouseX, mouseY);
-	 }
+	public void mousePressed() {
+		log.pres(mouseX, mouseY);
+	}
 
 	public void mouseDragged() {
 		log.mover(mouseX, mouseY);
+	}
+
+	public void mouseReleased() {
+		// log.soltar();
 	}
 
 	public void mouseClicked() {

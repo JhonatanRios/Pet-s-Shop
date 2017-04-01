@@ -10,7 +10,6 @@ public class Logica {
 	PApplet app;
 	private int pantalla, var;
 	private boolean boton;
-	private boolean anadir = true;
 	private PImage[] panta;
 	private PImage[] recog;
 	private ArrayList<Guia> guia = new ArrayList<Guia>();
@@ -47,17 +46,18 @@ public class Logica {
 		contador4 = 0;
 		contador = 0;
 
-		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 0));
-		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 1));
-		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 2));
-		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 3));
-		guia.add(new Guia(app, (int) app.random(360, 950), (int) app.random(50, 550), 4));
+		guia.add(new Guia(app, 0));
+		guia.add(new Guia(app, 1));
+		guia.add(new Guia(app, 2));
+		guia.add(new Guia(app, 3));
+		guia.add(new Guia(app, 4));
 
 		for (int j = 0; j < 10; j++) {
 			for (int i = 0; i < 5; i++) {
 				compa.add(new Compa(recog, i, app));
 			}
 		}
+
 	}
 
 	public void pintar(PApplet app) {
@@ -85,6 +85,7 @@ public class Logica {
 
 			app.image(panta[1], 0, 0);
 			pintar();
+			distancia();
 
 			break;
 		}
@@ -106,6 +107,12 @@ public class Logica {
 		}
 	}
 
+	private void atraparObjeto() {
+		// TODO Auto-generated method stub
+
+	}
+
+	// Codigo ayudado por Estefania Grimaldo
 	public void distancia() {
 		for (int i = 0; i < guia.size(); i++) {
 			Guia elementoO = guia.get(i);
@@ -164,6 +171,10 @@ public class Logica {
 				Collections.sort(removidos);
 			}
 
+			if (app.key == '2') {
+				Collections.sort(removidos, new Alrevez());
+			}
+
 			if (app.key == ' ') {
 				for (int j = 0; j < removidos.size(); j++) {
 					Compa reco = removidos.get(j);
@@ -203,15 +214,39 @@ public class Logica {
 
 	public void pres(int mouseX, int mouseY) {
 		for (int i = 0; i < this.guia.size(); i++) {
-			if (guia.get(i).validar(mouseX, mouseY)) {
-				this.g = this.guia.get(i);
-				break;
+			Guia cerdo = guia.get(0);
+			if (PApplet.dist(mouseX, mouseY, cerdo.getX(), cerdo.getY()) < 50) {
+				g = cerdo;
 			}
+			Guia conejo = guia.get(1);
+			if (PApplet.dist(mouseX, mouseY, conejo.getX(), conejo.getY()) < 50) {
+				g = conejo;
+			}
+			Guia gato = guia.get(2);
+			if (PApplet.dist(mouseX, mouseY, gato.getX(), gato.getY()) < 50) {
+				g = gato;
+			}
+			Guia perro = guia.get(3);
+			if (PApplet.dist(mouseX, mouseY, perro.getX(), perro.getY()) < 50) {
+				g = perro;
+			}
+			Guia pez = guia.get(4);
+			if (PApplet.dist(mouseX, mouseY, pez.getX(), pez.getY()) < 50) {
+				g = pez;
+			}
+
+			// if (guia.get(i).validar(mouseX, mouseY)) {
+			// this.g = this.guia.get(i);
+			// break;
+			// }
 		}
 	}
 
 	public void mover(int mouseX, int mouseY) {
-		g.mover(mouseX, mouseY);
+		if (g != null) {
+			g.setX(app.mouseX);
+			g.setY(app.mouseY);
+		}
 	}
 
 }

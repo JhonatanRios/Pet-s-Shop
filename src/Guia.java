@@ -11,18 +11,18 @@ public class Guia implements Pintable {
 	private float y;
 	private int ani;
 
-	private ArrayList<Compa> compaRef = new ArrayList<Compa>();
+	ArrayList<Compa> compaRef = new ArrayList<Compa>();
 
 	private boolean borde;
 
 	private PImage[] guia = new PImage[15];
 
-	public Guia(PApplet app, float x, float y, int ani) {
+	public Guia(PApplet app, int ani) {
 
 		this.app = app;
 		this.ani = ani;
-		this.x = x;
-		this.y = y;
+		x = (int) app.random(310, 950);
+		y = (int) app.random(50, 550);
 
 		guia[0] = app.loadImage("../data/Cerdo.png");
 		guia[1] = app.loadImage("../data/Conejo.png");
@@ -48,7 +48,7 @@ public class Guia implements Pintable {
 	}
 
 	private void pintarGuia(PApplet app) {
-
+		app.imageMode(PConstants.CENTER);
 		// Triste
 		// Cerdo
 		if (ani == 0) {
@@ -122,29 +122,28 @@ public class Guia implements Pintable {
 		if (ani == 14) {
 			app.image(guia[ani], x, y);
 		}
-
+		app.imageMode(PConstants.CORNER);
 	}
 
-	// private void pintarCompa(PApplet app) {
-	// for (int i = 0; i < compaRef.size(); i++) {
-	// compaRef.get(i).pintar();
-	// compaRef.get(i).setX(x);
-	// compaRef.get(i).setY(y);
-	// compaRef.get(i).setTet((float) (compaRef.get(i).getTet() + 0.05));
-	// compaRef.get(i).rotar();
-	// }
-	// }
-
-	public void mover(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-
-	public void agregar(Compa compa) {
-		compaRef.add(compa);
-		for (int i = compaRef.size() - 1; i >= 0; i--) {
-			compaRef.get(i).setTet(2 * PConstants.PI / compaRef.size() * i);
+	private void pintarCompa(PApplet app) {
+		for (int i = 0; i < compaRef.size(); i++) {
+			compaRef.get(i).pintar();
+			compaRef.get(i).setX(x);
+			compaRef.get(i).setY(y);
+			compaRef.get(i).setTet((float) (compaRef.get(i).getTet() + 0.05));
+			compaRef.get(i).rotar();
 		}
+	}
+
+	public boolean Agregar(Compa c) {
+		if (compaRef.size() < 10) {
+			compaRef.add(c);
+			for (int i = compaRef.size() - 1; i >= 0; i--) {
+				compaRef.get(i).setTet(2 * PConstants.PI / compaRef.size() * i);
+			}
+			return true;
+		}
+		return false;
 	}
 
 	public boolean validar(int wx, int wy) {

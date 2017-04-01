@@ -10,8 +10,8 @@ public class Compa implements Pintable, Comparable<Compa> {
 	private int perro;
 	private int pez;
 
-	private int x;
-	private int y;
+	private float x;
+	private float y;
 
 	private int a;
 	private int bDos;
@@ -31,6 +31,10 @@ public class Compa implements Pintable, Comparable<Compa> {
 		this.y = (int) app.random(50, 550);
 		a = 0;
 		bDos = 0;
+		conejo = 0;
+		gato = 0;
+		perro = 0;
+		pez = 0;
 	}
 
 	public void pintar() {
@@ -88,19 +92,19 @@ public class Compa implements Pintable, Comparable<Compa> {
 		bDos = (int) (rad * PApplet.sin(tet));
 	}
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 
@@ -131,4 +135,53 @@ public class Compa implements Pintable, Comparable<Compa> {
 	public int compareTo(Compa o) {
 		return o.ani - ani;
 	}
+
+	public int getConejo() {
+		return conejo;
+	}
+
+	public void setConejo(int conejo) {
+		this.conejo = conejo;
+	}
+
+	public int getGato() {
+		return gato;
+	}
+
+	public void setGato(int gato) {
+		this.gato = gato;
+	}
+
+	public int getPerro() {
+		return perro;
+	}
+
+	public void setPerro(int perro) {
+		this.perro = perro;
+	}
+
+	public int getPez() {
+		return pez;
+	}
+
+	public void setPez(int pez) {
+		this.pez = pez;
+	}
+
+	// public int compareD(Compa o) {
+	// return o.conejo - conejo;
+	// }
+	//
+	// public int compareT(Compa o) {
+	// return o.gato - gato;
+	// }
+	//
+	// public int compareC(Compa o) {
+	// return o.perro - perro;
+	// }
+	//
+	// public int compareCi(Compa o) {
+	// return o.pez - pez;
+	// }
+
 }
